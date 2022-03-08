@@ -2,6 +2,7 @@
 
 require 'pokemon.php';
 require 'mainEngine.php';
+require 'population.php';
 
 
 $pikachu = new pokemon('pikachu', 'lightning', '60', '60', (['Electric ring','Pika punch']), (['60', '20']), 'fire', 'fighting');
@@ -54,18 +55,3 @@ $charmelion = new pokemon('charmelion', 'fire', '60', '60', (['Heat butt','Flare
     checkHp($pikachu, $charmelion);
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon battle</title>
-</head>
-<body>
-    <form method="post">
-        <input type="submit" name="nextMove" class="button" href="index.php" value="next move"/>
-        <input type="submit" name="restart" class="button" href="index.php" value="restart"/>
-    </form>
-</body>
-</html>
