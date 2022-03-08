@@ -1,24 +1,35 @@
 <?php
 
-
-
-function attack($moveCounter){
-    
-    
-    if ($moveCounter == 1){
-        echo "move 1";
-        $moveCounter++;
-        
-        
+function damageCharmelion($charmelion, $moveUsed ,$moveDmg){
+    #checks the resist that charmelion has.
+    if($moveUsed == $charmelion->resistance){
+       $dmgTBD = $moveDmg / 2;
     }
-    elseif ($moveCounter == 2){
-        echo "move 2";
-        $moveCounter++;
-       
+    else if($moveUsed == $charmelion->weakness){
+        $dmgTBD = $moveDmg * 2;
     }
     else{
-        echo "we have a problem";
+        echo 'invalid selection';
     }
+
+    $battleDmg = $charmelion->currentHp-$dmgTBD;
+    return $battleDmg;
 };
+
+function damagePikachu($pikachu, $moveUsed, $moveDmg){
+    #checks the resist that pikachu has.
+    if($moveUsed == $pikachu->resistance){
+        $dmgTBD = $moveDmg / 2;
+     }
+     else if($moveUsed == $pikachu->weakness){
+         $dmgTBD = $moveDmg * 2;
+     }
+     else{
+         echo 'invalid selection';
+     }
+
+     $battleDmg = $dmgTBD;
+     return $battleDmg;     
+}
 
 ?>
