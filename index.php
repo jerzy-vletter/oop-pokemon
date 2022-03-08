@@ -1,6 +1,6 @@
 <?php 
 
-require 'pc.php';
+require 'pokemon.php';
 require 'mainEngine.php';
 
 
