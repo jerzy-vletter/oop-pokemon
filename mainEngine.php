@@ -2,10 +2,10 @@
 
 function damageCharmelion($charmelion, $moveUsed ,$moveDmg){
     #checks the resist that charmelion has.
-    if($moveUsed == $charmelion->resistance){
-       $dmgTBD = $moveDmg / 2;
+    if($moveUsed == $charmelion->getProperty('resistance')){
+       $dmgTBD = $moveDmg - 10;
     }
-    else if($moveUsed == $charmelion->weakness){
+    else if($moveUsed == $charmelion->getProperty('weakness')){
         $dmgTBD = $moveDmg * 2;
     }
     else{
@@ -18,11 +18,11 @@ function damageCharmelion($charmelion, $moveUsed ,$moveDmg){
 
 function damagePikachu($pikachu, $moveUsed, $moveDmg){
     #checks the resist that pikachu has.
-    if($moveUsed == $pikachu->resistance){
-        $dmgTBD = $moveDmg / 2;
+    if($moveUsed == $pikachu->getProperty('resistance')){
+        $dmgTBD = $moveDmg - 20;
      }
-     else if($moveUsed == $pikachu->weakness){
-         $dmgTBD = $moveDmg * 2;
+     else if($moveUsed == $pikachu->getProperty('weakness')){
+         $dmgTBD = $moveDmg * 1.5;
      }
      else{
          echo 'invalid selection';

@@ -2,7 +2,6 @@
 
 require 'pokemon.php';
 require 'mainEngine.php';
-require 'population.php';
 
 
 $pikachu = new pokemon('pikachu', 'lightning', '60', '60', (['Electric ring','Pika punch']), (['60', '20']), 'fire', 'fighting');
@@ -10,9 +9,9 @@ $charmelion = new pokemon('charmelion', 'fire', '60', '60', (['Heat butt','Flare
 
 
     function checkHp($pikachu, $charmelion){
-        echo ''.$pikachu->name.' hp is at '.$pikachu->currentHp.''; 
+        echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
         echo '<br>';
-        echo ''.$charmelion->name.' hp is at '.$charmelion->currentHp.''; 
+        echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
         echo '<br>'; echo '<br>';
     }
     
@@ -21,37 +20,42 @@ $charmelion = new pokemon('charmelion', 'fire', '60', '60', (['Heat butt','Flare
     echo '_____________________________________________________';
     echo '<br>'; echo '<br>';
     
-    checkHp($pikachu, $charmelion);
+    $moveUsed = $pikachu->getProperty('energyType');
+    $moveDmg = $pikachu->attackDmg[0];
+    $battleDmg = damageCharmelion($charmelion, $moveUsed, $moveDmg);  
     
-    echo ''.$pikachu->name.' attacks '.$charmelion->name.' with '.$pikachu->attack[0].' dealing '.$pikachu->attackDmg[0].' dmg';
+    echo ''.$pikachu->getProperty('name').' attacks '.$charmelion->getProperty('name').' with '.$pikachu->attack[0].' dealing '.$battleDmg.' dmg';
     echo '<br>';
 
-    $moveUsed = $pikachu->energyType;
-    $moveDmg = $pikachu->attackDmg[0];
-    $battleDmg = damageCharmelion($charmelion, $moveUsed, $moveDmg);    
-    $charmelion->currentHp = $charmelion->currentHp - $battleDmg;
+    $charmelion->currentHp = $charmelion->getProperty('currentHp') - $battleDmg;
     
-    echo ''.$charmelion->name.' takes '.$battleDmg.' dmg';
+    echo ''.$charmelion->getProperty('name').' takes '.$battleDmg.' dmg';
 
     echo '<br>'; echo '<br>';
+
+    checkHp($pikachu, $charmelion);
+
     echo '_____________________________________________________';
     echo '<br>'; echo '<br>';
 
-    checkHp($pikachu, $charmelion);
-
-    echo ''.$charmelion->name.' attacks '.$pikachu->name.' with '.$charmelion->attack[1].' dealing '.$charmelion->attackDmg[1].' dmg';
-    echo '<br>';
-    $moveUsed = $charmelion->energyType;
+    $moveUsed = $charmelion->getProperty('energyType');
     $moveDmg = $charmelion->attackDmg[1];
     $battleDmg = damagePikachu($pikachu, $moveUsed, $moveDmg);
-    $pikachu->currentHp = $pikachu->currentHp - $battleDmg;
 
-    echo ''.$pikachu->name.' takes '.$battleDmg.' dmg';
+    echo ''.$charmelion->getProperty('name').' attacks '.$pikachu->getProperty('name').' with '.$charmelion->attack[1].' dealing '.$battleDmg.' dmg';
+    echo '<br>';
+    
+    $pikachu->currentHp = $pikachu->getProperty('currentHp') - $battleDmg;
 
-    echo '<br>'; echo '<br>';
-    echo '_____________________________________________________';
+    echo ''.$pikachu->getProperty('name').' takes '.$battleDmg.' dmg';
+
     echo '<br>'; echo '<br>';
 
     checkHp($pikachu, $charmelion);
+
+    echo '_____________________________________________________';
+    echo '<br>'; echo '<br>';
+    
+
 
 ?>
