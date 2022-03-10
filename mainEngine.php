@@ -32,4 +32,6 @@ function damagePikachu($pikachu, $moveUsed, $moveDmg){
      return $battleDmg;     
 }
 
+
+
 ?>

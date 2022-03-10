@@ -1,15 +1,15 @@
 <?php 
 
-class pokemon {
+class pokemon extends attack{
     // Properties.
-    public $name;
-    public $energyType;
-    public $maxHp;
+    private $name;
+    private $energyType;
+    private $maxHp;
     public $currentHp;
     public $attack;
     public $attackDmg;
-    public $weakness;
-    public $resistance;
+    private $weakness;
+    private $resistance;
 
     public function __construct($name, $energyType, $maxHp, $currentHp, $attack, $attackDmg, $weakness, $resistance)
     {
@@ -37,7 +37,6 @@ class pokemon {
     }
 
     // setters
-
     public function setProperty($name, $value){
         $this->name = $value;
     }
