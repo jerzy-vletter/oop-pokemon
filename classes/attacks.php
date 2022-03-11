@@ -1,29 +1,20 @@
 <?php 
 
-class attack {
-    //properties.
+class attack{
     public $attackName;
     public $attackDmg;
 
-    
-
-    // getters
-    public function getProperty($name){
-        return $this->$name;
+    public function __construct($attackName, $attackDmg)
+    {
+        $this->attackName = $attackName;
+        $this->attackDmg = $attackDmg;
     }
 
-    public function __get($name){
-        return 'property $name is not defined';
+    public function __toString()
+    {
+        return json_encode($this);
     }
-
-    // setters
-    public function setProperty($name, $value){
-        $this->name = $value;
-    }
-
-    public function __set($name, $value){
-        echo '<br>can not set property $name because it is not defined<br>';
-    }
+        
 }
 
 ?>
