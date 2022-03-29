@@ -1,6 +1,6 @@
 <?php 
 
-class attack{
+class Attack{
     public $attackName;
     public $attackDmg;
 
@@ -16,5 +16,5 @@ class attack{
     }
         
 }
-
+//classes en file names always start with a A.
 ?>

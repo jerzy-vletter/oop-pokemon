@@ -1,8 +1,8 @@
 <?php 
-require 'attacks.php';
+require 'Attack.php';
 
 
-class pokemon extends attack{
+class Pokemon{
     // Properties.
     public $name;
     public $energyType;
@@ -21,7 +21,7 @@ class pokemon extends attack{
         $this->weakness=$weakness;
         $this->resistance=$resistance;
 
-        $this->increasePopulation($population);
+        $this->increasePopulation($basePopulation, $currentPopulation);
     }
     
     public function __toString(){
@@ -67,10 +67,24 @@ class pokemon extends attack{
         echo ''.$target->name.' takes '.$move.' dmg'.'<br>';
         $target->currentHp = $target->currentHp - $move;
     }
-
-    public function increasePopulation($population){
-            $population = $population + 1;
-            return $population;
+    // very work in progress
+    public function increasePopulation($basePopulation ,$currentPopulation){
+        if ($basePopulation == 0 ){
+            if (!isset($currentPopulation)) {
+                $currentPopulation = 1;
+            }
+        }
+        else{
+            echo "else triggers"."<br>";
+            $currentPopulation + 1;
+        }
+        echo " increasePopulation triggers with a population of ";
+        echo $currentPopulation."<br>";
+    }
+    // very work in progress
+    public function getPopulation($currentPopulation){
+        echo "getPopulation triggers with a current population of ";
+        echo $currentPopulation."<br>";
     }
 
 

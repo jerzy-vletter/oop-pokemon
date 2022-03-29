@@ -1,37 +1,37 @@
 <?php 
 
-require_once './classes/pokemon.php';
-require_once './classes/attacks.php';
+require_once './classes/Pokemon.php';
+require_once './classes/Attack.php';
+require_once './classes/Pikachu.php';
+require_once './classes/Charmelion.php';
 
+$basePopulation = 0;
 
 // the creation of new pokemon happens here.
-$pikachu = new pokemon('pikachu', 'lightning', '60', '60', [new attack('Electric Ring', 60 ) , new attack('Pika Punch', 20)], 'fire', 'fighting');
+$pikachu = new Pikachu('pikachu');
 
-$population = 1;
+$pikachu->getPopulation($currentPopulation);
 
-$charmelion = new pokemon('charmelion', 'fire', '60', '60', [new attack('Heat butt', 10 ) , new attack('flare', 30 )], 'water', 'lightning');
-
-$currentPopulation = $charmelion->increasePopulation($population);
-
+$charmelion = new Charmelion('charmelion');
+echo '_____________________________________________________'.'<br>'.'<br>';
 // end of pokemon creation box
 
 echo "WELKOM TO THE POKEMON BATTLE"."<br>"."<br>";
 
-echo 'current population = '.$currentPopulation.'<br>';
+echo 'current population = '.$pikachu->getPopulation($currentPopulation).'<br>';
 
 // division line number 1
 echo '_____________________________________________________'.'<br>'.'<br>';
 
 // when called echos a static piece of text with some changing properties.
-function checkHp($pikachu, $charmelion){
-    echo 'hp of all pokemon before the battle'.'<br>';
+function checkHp($pikachu, $charmelion){    
     echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
     echo '<br>';
     echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
     echo '<br>';
 }
 
-
+echo 'hp of all pokemon before the battle'.'<br>';
 checkHp($pikachu, $charmelion); 
 
 // division line number 2
