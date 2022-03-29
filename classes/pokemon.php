@@ -1,6 +1,7 @@
 <?php 
 require 'attacks.php';
 
+
 class pokemon extends attack{
     // Properties.
     public $name;
@@ -20,7 +21,7 @@ class pokemon extends attack{
         $this->weakness=$weakness;
         $this->resistance=$resistance;
 
-        $this->increasePopulation();
+        $this->increasePopulation($population);
     }
     
     public function __toString(){
@@ -67,18 +68,12 @@ class pokemon extends attack{
         $target->currentHp = $target->currentHp - $move;
     }
 
-    public function increasePopulation(){
-        if(isset($population)) $population = 0;
-        $population = $population + 1;
-    }
-    
-    public function getPopulation(){
-        
+    public function increasePopulation($population){
+            $population = $population + 1;
+            return $population;
     }
 
-    public function checkHP(){
-        
-    }
+
 }
 
 ?>

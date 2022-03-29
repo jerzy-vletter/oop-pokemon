@@ -3,13 +3,21 @@
 require_once './classes/pokemon.php';
 require_once './classes/attacks.php';
 
-$population->getPopulation();
 
 // the creation of new pokemon happens here.
 $pikachu = new pokemon('pikachu', 'lightning', '60', '60', [new attack('Electric Ring', 60 ) , new attack('Pika Punch', 20)], 'fire', 'fighting');
+
+$population = 1;
+
 $charmelion = new pokemon('charmelion', 'fire', '60', '60', [new attack('Heat butt', 10 ) , new attack('flare', 30 )], 'water', 'lightning');
 
-echo 'current population = '.$population.'<br>';
+$currentPopulation = $charmelion->increasePopulation($population);
+
+// end of pokemon creation box
+
+echo "WELKOM TO THE POKEMON BATTLE"."<br>"."<br>";
+
+echo 'current population = '.$currentPopulation.'<br>';
 
 // division line number 1
 echo '_____________________________________________________'.'<br>'.'<br>';
