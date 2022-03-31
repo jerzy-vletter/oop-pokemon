@@ -5,16 +5,14 @@ require_once './classes/Attack.php';
 require_once './classes/Pikachu.php';
 require_once './classes/Charmelion.php';
 
-$basePopulation = 0;
 
 // the creation of new pokemon happens here.
 $pikachu = new Pikachu('pikachu');
-
-$pikachu->getPopulation($currentPopulation);
-
 $charmelion = new Charmelion('charmelion');
-echo '_____________________________________________________'.'<br>'.'<br>';
+
 // end of pokemon creation box
+// division line number 0 (pre battle)
+echo '<br>'.'_____________________________________________________'.'<br>'.'<br>';
 
 echo "WELKOM TO THE POKEMON BATTLE"."<br>"."<br>";
 
@@ -37,7 +35,8 @@ checkHp($pikachu, $charmelion);
 // division line number 2
 echo '_____________________________________________________'.'<br>'.'<br>';
 
-$move = $pikachu->attack[0];
+
+$move = $pikachu->attacks[0];
 $pikachu->battle($move, $charmelion);
 
 echo '<br>';
@@ -47,7 +46,7 @@ checkHp($pikachu, $charmelion);
 // division line number 3
 echo '_____________________________________________________'.'<br>'.'<br>';
 
-$move = $charmelion->attack[1];
+$move = $charmelion->attacks[1];
 $charmelion->battle($move, $pikachu);
 
 echo '<br>';

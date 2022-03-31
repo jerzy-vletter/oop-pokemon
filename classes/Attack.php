@@ -16,5 +16,4 @@ class Attack{
     }
         
 }
-//classes en file names always start with a A.
 ?>

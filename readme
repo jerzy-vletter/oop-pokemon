@@ -1,0 +1,3 @@
+zet de function waar ze horen, let dan op of dat het bij de parent class kan (als alles gelijk is voor alle sub-classes) of bij de child class (als het afwijkend is).
+
+if something goes wrong, always check all the properties first on grammer

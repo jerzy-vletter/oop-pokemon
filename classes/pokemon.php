@@ -8,20 +8,20 @@ class Pokemon{
     public $energyType;
     public $maxHp;
     public $currentHp;
-    public $attack;
+    public $attacks;
     public $weakness;
     public $resistance;
 
-    public function __construct($name, $energyType, $maxHp, $currentHp, $attack, $weakness, $resistance){
+    public function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance){
         $this->name=$name;
         $this->energyType=$energyType;
         $this->maxHp=$maxHp;
         $this->currentHp=$currentHp;
-        $this->attack=$attack;
+        $this->attacks=$attacks;
         $this->weakness=$weakness;
         $this->resistance=$resistance;
-
-        $this->increasePopulation($basePopulation, $currentPopulation);
+        
+        $this->increasePopulation();
     }
     
     public function __toString(){
@@ -33,6 +33,7 @@ class Pokemon{
         return $this->$name;
     }
 
+    // error catcher
     public function __get($name){
         return 'property $name is not defined';
     }
@@ -41,7 +42,8 @@ class Pokemon{
     public function setProperty($name, $value){
         $this->name = $value;
     }
-
+    
+    // error catcher
     public function __set($name, $value){
         echo '<br>can not set property $name because it is not defined<br>';
     }
@@ -62,28 +64,19 @@ class Pokemon{
             echo "something is wrong".'<br>';
         }
     
-        echo ''.$this->name.' attacks '. $target->name.' with '.$this->attack[0]->attackName.' dealing '.$move.' dmg'.'<br>'.'<br>';
+        echo ''.$this->name.' attacks '. $target->name.' with '.$this->attacks[0]->attackName.' dealing '.$move.' dmg'.'<br>'.'<br>';
         echo $effectiveness.'<br>';
         echo ''.$target->name.' takes '.$move.' dmg'.'<br>';
         $target->currentHp = $target->currentHp - $move;
     }
     // very work in progress
-    public function increasePopulation($basePopulation ,$currentPopulation){
-        if ($basePopulation == 0 ){
-            if (!isset($currentPopulation)) {
-                $currentPopulation = 1;
-            }
-        }
-        else{
-            echo "else triggers"."<br>";
-            $currentPopulation + 1;
-        }
-        echo " increasePopulation triggers with a population of ";
-        echo $currentPopulation."<br>";
+    public function increasePopulation(){
+        
+        echo " increasePopulation triggers with a population of ".'<br>';
     }
     // very work in progress
     public function getPopulation($currentPopulation){
-        echo "getPopulation triggers with a current population of ";
+        echo "getPopulation triggers with a current population of ".'<br>';
         echo $currentPopulation."<br>";
     }
 
