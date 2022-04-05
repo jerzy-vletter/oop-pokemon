@@ -1,7 +1,6 @@
 <?php 
 require 'Attack.php';
 
-
 class Pokemon{
     // Properties.
     public $name;

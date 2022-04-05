@@ -1,10 +1,6 @@
 <?php 
 
-require_once './classes/Pokemon.php';
-require_once './classes/Attack.php';
-require_once './classes/Pikachu.php';
-require_once './classes/Charmelion.php';
-
+require_once 'loader.php';
 
 // the creation of new pokemon happens here.
 $pikachu = new Pikachu('pikachu');
