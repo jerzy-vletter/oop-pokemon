@@ -9,13 +9,13 @@ class Pokemon{
     public static $currentPopulation=0;
 
     // Properties.
-    public $name;
-    public $energyType;
-    public $maxHp;
-    public $currentHp;
-    public $attacks;
-    public $weakness;
-    public $resistance;
+    private $name;
+    private $energyType;
+    private $maxHp;
+    private $currentHp;
+    public $attacks; //
+    public $weakness; // these three have to be public so the battle function can use them for it's calculations
+    public $resistance; //
 
     public function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance){
         $this->name=$name;
