@@ -1,6 +1,9 @@
 <?php 
 
 require_once 'loader.php';
+// just a little clock (is not needed for the project but i was bored)
+ini_set('date.timezone','Europe/Amsterdam'); 
+echo 'started this battle on: '.date("l jS \of F Y").' at '.date("H:i:s A");
 
 // the creation of new pokemon happens here.
 $pikachu = new Pikachu('pikachu');
