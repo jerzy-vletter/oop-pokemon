@@ -54,6 +54,7 @@ class Pokemon{
         echo '<br>can not set property $name because it is not defined<br>';
     }
 
+    // a battle function where all atributes are gathered by given the target
     public function battle($move, $target){
         $move = $move->attackDmg;
 
@@ -75,8 +76,15 @@ class Pokemon{
         echo ''.$target->name.' takes '.$move.' dmg'.'<br>';
         $target->currentHp = $target->currentHp - $move;
     }
-        
-    // very work in progress
+
+    // when called echos a static piece of text with some changing properties.
+    function checkHp($pikachu, $charmelion){    
+    echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
+    echo '<br>';
+    echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
+    echo '<br>';
+}
+    
     public function getPopulation(){
         return pokemon::$currentPopulation;
     }

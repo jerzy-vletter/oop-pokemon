@@ -20,16 +20,9 @@ echo 'current population = '.$pikachu->getPopulation($currentPopulation).'<br>';
 // division line number 1
 echo '_____________________________________________________'.'<br>'.'<br>';
 
-// when called echos a static piece of text with some changing properties.
-function checkHp($pikachu, $charmelion){    
-    echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
-    echo '<br>';
-    echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
-    echo '<br>';
-}
 
 echo 'hp of all pokemon before the battle'.'<br>';
-checkHp($pikachu, $charmelion); 
+$pikachu->checkHp($pikachu, $charmelion); 
 
 // division line number 2
 echo '_____________________________________________________'.'<br>'.'<br>';
@@ -40,7 +33,7 @@ $pikachu->battle($move, $charmelion);
 
 echo '<br>';
 
-checkHp($pikachu, $charmelion);
+$pikachu->checkHp($pikachu, $charmelion);
 
 // division line number 3
 echo '_____________________________________________________'.'<br>'.'<br>';
@@ -50,7 +43,7 @@ $charmelion->battle($move, $pikachu);
 
 echo '<br>';
 
-checkHp($pikachu, $charmelion);
+$charmelion->checkHp($pikachu, $charmelion);
 
 // division line number 4
 echo '_____________________________________________________'.'<br>'.'<br>';
