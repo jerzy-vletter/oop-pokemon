@@ -1,7 +1,7 @@
 <?php 
 
 require_once 'loader.php';
-// just a little clock (is not needed for the project but i was bored)
+// just a simple clock to show when you started the battle
 ini_set('date.timezone','Europe/Amsterdam'); 
 echo 'started this battle on: '.date("l jS \of F Y").' at '.date("H:i:s A");
 
@@ -48,5 +48,21 @@ $charmelion->checkHp($pikachu, $charmelion);
 // division line number 4
 echo '_____________________________________________________'.'<br>'.'<br>';
 
+$move = $pikachu->attacks[1];
+$pikachu->battle($move, $charmelion);
+
+echo '<br>';
+
+$pikachu->checkHp($pikachu, $charmelion);
+
+// division line number 5
+echo '_____________________________________________________'.'<br>'.'<br>';
+
+$move = $charmelion->attacks[0];
+$charmelion->battle($move, $pikachu);
+
+echo '<br>';
+
+$charmelion->checkHp($pikachu, $charmelion);
 
 ?>

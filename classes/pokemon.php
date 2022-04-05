@@ -78,11 +78,22 @@ class Pokemon{
     }
 
     // when called echos a static piece of text with some changing properties.
-    function checkHp($pikachu, $charmelion){    
-    echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
-    echo '<br>';
-    echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
-    echo '<br>';
+    function checkHp($pikachu, $charmelion){  
+        $currentPopulation = pokemon::$currentPopulation;
+        $newPopulation = $currentPopulation - 1;
+        
+        if ($pikachu->getProperty('currentHp') <= 0){
+            echo "".$pikachu->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$newPopulation;
+        }
+        elseif ($charmelion->getProperty('currentHp') <= 0) {
+            echo "".$charmelion->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$newPopulation;
+        }
+        else{
+            echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
+            echo '<br>';
+            echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
+            echo '<br>';
+        }
 }
     
     public function getPopulation(){
