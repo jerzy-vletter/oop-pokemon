@@ -17,7 +17,7 @@ class Pokemon{
     public $weakness; // these three have to be public so the battle function can use them for it's calculations
     public $resistance; //
 
-    public function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance){
+    protected function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance){
         $this->name=$name;
         $this->energyType=$energyType;
         $this->maxHp=$maxHp;
