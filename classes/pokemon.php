@@ -1,7 +1,13 @@
-<?php 
+<?php
+
+use Pokemon as GlobalPokemon;
+
 require 'Attack.php';
 
 class Pokemon{
+
+    public static $currentPopulation=0;
+
     // Properties.
     public $name;
     public $energyType;
@@ -20,7 +26,8 @@ class Pokemon{
         $this->weakness=$weakness;
         $this->resistance=$resistance;
         
-        $this->increasePopulation();
+        // increases the population everytime a pokemon is created.
+        pokemon::$currentPopulation++;
     }
     
     public function __toString(){
@@ -68,15 +75,10 @@ class Pokemon{
         echo ''.$target->name.' takes '.$move.' dmg'.'<br>';
         $target->currentHp = $target->currentHp - $move;
     }
-    // very work in progress
-    public function increasePopulation(){
         
-        echo " increasePopulation triggers with a population of ".'<br>';
-    }
     // very work in progress
-    public function getPopulation($currentPopulation){
-        echo "getPopulation triggers with a current population of ".'<br>';
-        echo $currentPopulation."<br>";
+    public function getPopulation(){
+        return pokemon::$currentPopulation;
     }
 
 
