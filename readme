@@ -1,3 +1,9 @@
 zet de function waar ze horen, let dan op of dat het bij de parent class kan (als alles gelijk is voor alle sub-classes) of bij de child class (als het afwijkend is).
 
 if something goes wrong, always check all the properties first on grammer
+
+when working with count tracters of a class, keep a read.me / a txt file with defenitions.
+
+make sure if you give a array paramiter to not overwrite it while trying to get one part of it.
+
+use method chaining when able.

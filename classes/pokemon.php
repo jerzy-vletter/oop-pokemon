@@ -1,6 +1,5 @@
 <?php
 
-use Pokemon as GlobalPokemon;
 
 require 'Attack.php';
 
@@ -39,7 +38,7 @@ class Pokemon{
         return $this->$name;
     }
 
-    // error catcher
+    // error catcher for the getters
     public function __get($name){
         return 'property $name is not defined';
     }
@@ -49,50 +48,56 @@ class Pokemon{
         $this->name = $value;
     }
     
-    // error catcher
+    // error catcher for the setters
     public function __set($name, $value){
         echo '<br>can not set property $name because it is not defined<br>';
     }
 
     // a battle function where all atributes are gathered by given the target
     public function battle($move, $target){
-        $move = $move->attackDmg;
+
+        // division line
+        echo '_____________________________________________________'.'<br>'.'<br>';
+
+        $dmg = $move->attackDmg;
 
         // checks if the move if effective against the target or not.
         if ($this->energyType == $target->weakness){
-            $move = $move * 1.5;
+            $dmg = $dmg * 1.5;
             $effectiveness = 'the move is super effective <br>';
         }
         else if ($this->energyType == $target->resistance){
-            $move = $move / 2;
+            $dmg = $dmg / 2;
             $effectiveness = "the move wasn't very effective <br>";
         }
         else{
             echo "something is wrong".'<br>';
         }
     
-        echo ''.$this->name.' attacks '. $target->name.' with '.$this->attacks[0]->attackName.' dealing '.$move.' dmg'.'<br>'.'<br>';
+        echo ''.$this->name.' attacks '. $target->name.' with '.$move->attackName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
         echo $effectiveness.'<br>';
-        echo ''.$target->name.' takes '.$move.' dmg'.'<br>';
-        $target->currentHp = $target->currentHp - $move;
+        echo ''.$target->name.' takes '.$dmg.' dmg'.'<br>';
+        $target->currentHp = $target->currentHp - $dmg;
+
+        echo '<br>';
+
+        $this->checkHp($this, $target);
     }
 
     // when called echos a static piece of text with some changing properties.
-    function checkHp($pikachu, $charmelion){  
+    function checkHp($attacker, $target){  
         $currentPopulation = pokemon::$currentPopulation;
-        $newPopulation = $currentPopulation - 1;
+        $currentPopulation = $currentPopulation - 1;
         
-        if ($pikachu->getProperty('currentHp') <= 0){
-            echo "".$pikachu->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$newPopulation;
+        if ($attacker->getProperty('currentHp') <= 0){
+            echo "".$attacker->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
         }
-        elseif ($charmelion->getProperty('currentHp') <= 0) {
-            echo "".$charmelion->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$newPopulation;
+        elseif ($target->getProperty('currentHp') <= 0) {
+            echo "".$target->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
         }
         else{
-            echo ''.$pikachu->getProperty('name').' hp is at '.$pikachu->getProperty('currentHp').''; 
-            echo '<br>';
-            echo ''.$charmelion->getProperty('name').' hp is at '.$charmelion->getProperty('currentHp').''; 
-            echo '<br>';
+            echo $attacker->getProperty('name').' hp is at '.$attacker->getProperty('currentHp').'<br>'; 
+            echo ''.$target->getProperty('name').' hp is at '.$target->getProperty('currentHp').'<br>'; 
         }
 }
     
