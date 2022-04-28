@@ -54,16 +54,6 @@ class Pokemon{
     }
 
     // a battle function where all atributes are gathered by given the target
-    public function callBattleMethod($move, $target){
-        // gets to call the battle method in from a child class.
-
-        if (function_exists('battle')) {
-            echo "battle functions are available.<br />\n";
-        } else {
-            return;
-        }
-
-    }
     public function battle($move, $target){
 
         // division line
