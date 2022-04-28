@@ -7,12 +7,10 @@ ini_set('date.timezone','Europe/Amsterdam');
 echo 'started this battle on: '.date("l jS \of F Y").' at '.date("H:i:s A").' LT';
 
 // the creation of new pokemon happens here.
-$pikachu = new Pikachu('pikachu', 'lightning', 'fire', 'fighting');
-$charmelion = new Charmelion('charmelion', 'fire', 'water', 'lightning');
+$pikachu = new Pikachu('pikachu');
+$charmelion = new Charmelion('charmelion');
 
 // end of pokemon creation box
-
-
 
 // division line number 0 (pre battle)
 echo '<br>'.'_____________________________________________________'.'<br>'.'<br>';
@@ -25,21 +23,69 @@ echo '_____________________________________________________'.'<br>'.'<br>';
 
 
 echo 'hp of all pokemon before the battle'.'<br><br>';
-$pikachu->checkHp($pikachu, $charmelion); 
+$hpText = $pikachu->checkHp($pikachu, $charmelion); 
+echo $hpText;
+
+echo '_____________________________________________________'.'<br>'.'<br>';
 
 # start battle.
-
 $move = $pikachu->attacks[0];
-$pikachu->battle($move, $charmelion);
+$battleText = $pikachu->battle($move, $charmelion);
 
+// getting the variables for the battle text out of the returned array.
+list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
+
+echo ''.$attackerName.' attacks '. $targetName.' with '.$moveName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
+echo $effectiveness.'<br>';
+echo ''.$targetName.' takes '.$dmg.' dmg'.'<br>';
+
+echo '<br>';
+$hpText = $pikachu->checkHp($pikachu, $charmelion); 
+echo $hpText;
+
+echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $charmelion->attacks[1];
-$charmelion->battle($move, $pikachu);
+$battleText = $charmelion->battle($move, $pikachu);
+
+list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
+
+echo ''.$attackerName.' attacks '. $targetName.' with '.$moveName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
+echo $effectiveness.'<br>';
+echo ''.$targetName.' takes '.$dmg.' dmg'.'<br>';
+
+echo '<br>';
+$hpText = $charmelion->checkHp($pikachu, $charmelion); 
+echo $hpText;
+
+echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $pikachu->attacks[1];
-$pikachu->battle($move, $charmelion);
+$battleText = $pikachu->battle($move, $charmelion);
+
+list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
+
+echo ''.$attackerName.' attacks '. $targetName.' with '.$moveName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
+echo $effectiveness.'<br>';
+echo ''.$targetName.' takes '.$dmg.' dmg'.'<br>';
+
+echo '<br>';
+$hpText = $pikachu->checkHp($pikachu, $charmelion); 
+echo $hpText;
+
+echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $charmelion->attacks[0];
-$charmelion->battle($move, $pikachu);
+$battleText = $charmelion->battle($move, $pikachu);
+
+list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
+
+echo ''.$attackerName.' attacks '. $targetName.' with '.$moveName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
+echo $effectiveness.'<br>';
+echo ''.$targetName.' takes '.$dmg.' dmg'.'<br>';
+
+echo '<br>';
+$hpText = $charmelion->checkHp($pikachu, $charmelion); 
+echo $hpText;
 
 ?>

@@ -16,11 +16,11 @@ class Pokemon{
     public $weakness; // these three have to be public so the battle function can use them for it's calculations
     public $resistance; //
 
-    protected function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance){
+    public function __construct($name, $energyType, $maxHp, $attacks, $weakness, $resistance){
         $this->name=$name;
         $this->energyType=$energyType;
         $this->maxHp=$maxHp;
-        $this->currentHp=$currentHp;
+        $this->currentHp=$maxHp;
         $this->attacks=$attacks;
         $this->weakness=$weakness;
         $this->resistance=$resistance;
@@ -53,52 +53,68 @@ class Pokemon{
         echo '<br>can not set property $name because it is not defined<br>';
     }
 
-    // a battle function where all atributes are gathered by given the target
+    // the brains behind the battle function, where all data is gathered, used and returnd in a array
     public function battle($move, $target){
 
-        // division line
-        echo '_____________________________________________________'.'<br>'.'<br>';
+        // declaring a empty variable for the return later
+        $battelText = array();
 
+        // getting the data needed from different classes
+        $weaknessData = $target->weakness[0];
+        $resistanceData = $target->resistance[0];
+        $energyTypeData = $this->energyType[0];
+
+        //turning all the data that was gathered into usable variables
         $dmg = $move->attackDmg;
-
+        $energyType = $energyTypeData->energyType;
+        $weaknessType = $weaknessData->energyType;
+        $resistanceType = $resistanceData->energyType;
+        $weaknessValue = $weaknessData->multiplier;
+        $resistanceValue = $resistanceData->waarde;
+        
         // checks if the move if effective against the target or not.
-        if ($this->energyType == $target->weakness){
-            $dmg = $dmg * 1.5;
+        if ($energyType == $weaknessType){
+            $dmg = $dmg * $weaknessValue;
             $effectiveness = 'the move is super effective <br>';
         }
-        else if ($this->energyType == $target->resistance){
-            $dmg = $dmg / 2;
+        else if ($energyType == $resistanceType){
+            $dmg = $dmg - $resistanceValue;
             $effectiveness = "the move wasn't very effective <br>";
         }
         else{
             echo "something is wrong".'<br>';
         }
-    
-        echo ''.$this->name.' attacks '. $target->name.' with '.$move->attackName.' dealing '.$dmg.' dmg'.'<br>'.'<br>';
-        echo $effectiveness.'<br>';
-        echo ''.$target->name.' takes '.$dmg.' dmg'.'<br>';
-        $target->currentHp = $target->currentHp - $dmg;
+        
+        array_push($battelText, $this->name);
+        array_push($battelText, $target->name);
+        array_push($battelText, $move->attackName);
+        array_push($battelText, $dmg);
+        array_push($battelText, $effectiveness);
 
-        echo '<br>';
+        $target->currentHp = $target->currentHp-$dmg;
 
-        $this->checkHp($this, $target);
+        return $battelText;
     }
 
-    // when called echos a static piece of text with some changing properties.
+    // a function that checks if a pokemon has died or not, and returns the correct string to echo
     function checkHp($attacker, $target){  
+        // declaring a empty variable for later
+        $hpText = '';
+
         $currentPopulation = pokemon::$currentPopulation;
         $currentPopulation = $currentPopulation - 1;
         
-        if ($attacker->getProperty('currentHp') <= 0){
-            echo "".$attacker->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
+        if ($attacker->currentHp <= 0){
+            $hpText = "".$attacker->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
         }
         elseif ($target->getProperty('currentHp') <= 0) {
-            echo "".$target->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
+            $hpText = "".$target->getProperty('name')."'s hp was reduced to 0, current population has reduced to: ".$currentPopulation;
         }
         else{
-            echo $attacker->getProperty('name').' hp is at '.$attacker->getProperty('currentHp').'<br>'; 
-            echo ''.$target->getProperty('name').' hp is at '.$target->getProperty('currentHp').'<br>'; 
+            $hpText = $attacker->getProperty('name').' hp is at '.$attacker->getProperty('currentHp').'<br>'.''.$target->getProperty('name').' hp is at '.$target->getProperty('currentHp').'<br>'; 
         }
+
+        return $hpText;
 }
     
     public function getPopulation(){

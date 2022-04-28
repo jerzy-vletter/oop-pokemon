@@ -1,17 +1,19 @@
 <?php 
 
+class Resistance{
+    public $energyType;
+    public $waarde;
 
-class EnergyType extends Pokemon{
-
-    public  function __construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance)
+    public function __construct($energyType, $waarde)
     {
-        
-        $resistance = $resistance;
-
-        parent::__construct($name, $energyType, $maxHp, $currentHp, $attacks, $weakness, $resistance);
+        $this->energyType = $energyType;
+        $this->waarde = $waarde;
     }
+
+    public function __toString()
+    {
+        return json_encode($this);
+    }
+    
 }
-
-
-
 ?>
