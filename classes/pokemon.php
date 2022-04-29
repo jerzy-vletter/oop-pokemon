@@ -12,9 +12,9 @@ class Pokemon{
     private $energyType;
     private $maxHp;
     private $currentHp;
-    public $attacks; //
-    public $weakness; // these three have to be public so the battle function can use them for it's calculations
-    public $resistance; //
+    private $attacks; 
+    private $weakness;
+    private $resistance; 
 
     public function __construct($name, $energyType, $maxHp, $attacks, $weakness, $resistance){
         $this->name=$name;
@@ -58,20 +58,20 @@ class Pokemon{
 
         // declaring a empty variable for the return later
         $battelText = array();
-
-        // getting the data needed from different classes
-        $weaknessData = $target->weakness[0];
-        $resistanceData = $target->resistance[0];
-        $energyTypeData = $this->energyType[0];
-
-        //turning all the data that was gathered into usable variables
-        $dmg = $move->attackDmg;
-        $energyType = $energyTypeData->energyType;
-        $weaknessType = $weaknessData->energyType;
-        $resistanceType = $resistanceData->energyType;
-        $weaknessValue = $weaknessData->multiplier;
-        $resistanceValue = $resistanceData->waarde;
         
+        // getting all the data via getters
+        $energyTypeData = $this->getProperty('energyType');
+        $weaknessData = $target->getProperty('weakness');
+        $resistanceData = $target->getProperty('resistance');
+
+        // turning the gathered data into usable variables
+        $dmg = $move->attackDmg;
+        $energyType = $energyTypeData[0]->energyType;
+        $weaknessType = $weaknessData[0]->energyType;
+        $weaknessValue = $weaknessData[0]->multiplier;
+        $resistanceType = $resistanceData[0]->energyType;
+        $resistanceValue = $resistanceData[0]->waarde;
+           
         // checks if the move if effective against the target or not.
         if ($energyType == $weaknessType){
             $dmg = $dmg * $weaknessValue;
@@ -82,7 +82,8 @@ class Pokemon{
             $effectiveness = "the move wasn't very effective <br>";
         }
         else{
-            echo "something is wrong".'<br>';
+            $effectiveness = "something is wrong".'<br>';
+
         }
         
         array_push($battelText, $this->name);
@@ -91,15 +92,17 @@ class Pokemon{
         array_push($battelText, $dmg);
         array_push($battelText, $effectiveness);
 
-        $target->currentHp = $target->currentHp-$dmg;
+        
 
         return $battelText;
     }
 
     // a function that checks if a pokemon has died or not, and returns the correct string to echo
-    function checkHp($attacker, $target){  
+    function checkHp($attacker, $target, $dmg){  
         // declaring a empty variable for later
         $hpText = '';
+
+        $target->currentHp = $target->currentHp-$dmg;
 
         $currentPopulation = pokemon::$currentPopulation;
         $currentPopulation = $currentPopulation - 1;
