@@ -27,7 +27,7 @@ echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $pikachu->getProperty('attacks');
 $move = $move[0];
-$battleText = $pikachu->battle($move, $charmelion);
+$battleText = $pikachu->doAttack($move, $charmelion);
 
 // getting the variables for the battle text out of the returned array.
 list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
@@ -44,7 +44,7 @@ echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $charmelion->getProperty('attacks');
 $move = $move[1];
-$battleText = $charmelion->battle($move, $pikachu);
+$battleText = $charmelion->doAttack($move, $pikachu);
 
 // getting the variables for the battle text out of the returned array.
 list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
@@ -61,7 +61,7 @@ echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $pikachu->getProperty('attacks');
 $move = $move[1];
-$battleText = $pikachu->battle($move, $charmelion);
+$battleText = $pikachu->doAttack($move, $charmelion);
 
 // getting the variables for the battle text out of the returned array.
 list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;
@@ -78,7 +78,7 @@ echo '_____________________________________________________'.'<br>'.'<br>';
 
 $move = $charmelion->getProperty('attacks');
 $move = $move[0];
-$battleText = $charmelion->battle($move, $pikachu);
+$battleText = $charmelion->doAttack($move, $pikachu);
 
 // getting the variables for the battle text out of the returned array.
 list($attackerName, $targetName, $moveName, $dmg, $effectiveness) = $battleText;

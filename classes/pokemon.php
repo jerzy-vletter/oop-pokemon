@@ -51,7 +51,7 @@ class Pokemon{
     }
 
     // the brains behind the battle function, where all data is gathered, used and returnd in a array
-    public function battle($move, $target){
+    public function doAttack($move, $target){
 
         // declaring a empty variable for the return later
         $battelText = array();
