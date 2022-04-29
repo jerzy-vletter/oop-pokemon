@@ -12,26 +12,19 @@ $dmg = 0;
 // the creation of new pokemon happens here.
 $pikachu = new Pikachu('pikachu');
 $charmelion = new Charmelion('charmelion');
-
 // end of pokemon creation box
 
-// division line number 0 (pre battle)
+// division line (pre battle)
 echo '<br>'.'_____________________________________________________'.'<br>'.'<br>';
-
 echo "WELKOM TO THE POKEMON BATTLE"."<br><br>";
-
 echo 'current population = '.$pikachu->getPopulation().'<br>';
-// division line number 1
 echo '_____________________________________________________'.'<br>'.'<br>';
-
-
 echo 'hp of all pokemon before the battle'.'<br><br>';
 $hpText = $pikachu->checkHp($pikachu, $charmelion, $dmg); 
 echo $hpText;
-
 echo '_____________________________________________________'.'<br>'.'<br>';
-
 # start battle.
+
 $move = $pikachu->getProperty('attacks');
 $move = $move[0];
 $battleText = $pikachu->battle($move, $charmelion);

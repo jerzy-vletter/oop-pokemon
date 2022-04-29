@@ -1,8 +1,5 @@
 <?php
 
-
-require 'Attack.php';
-
 class Pokemon{
 
     public static $currentPopulation=0;
@@ -86,13 +83,12 @@ class Pokemon{
 
         }
         
+        // passing all the data that is needed for the echos into a variable array so it can be returned.
         array_push($battelText, $this->name);
         array_push($battelText, $target->name);
         array_push($battelText, $move->attackName);
         array_push($battelText, $dmg);
         array_push($battelText, $effectiveness);
-
-        
 
         return $battelText;
     }
