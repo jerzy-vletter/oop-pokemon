@@ -2,7 +2,10 @@
 
 class Pokemon{
 
-    public static $currentPopulation=0;
+    // declaring variables that are changed later on in the code 1 or more times
+    public static $currentPopulation = 0;
+    public static $moveSelect = 0;
+
 
     // Properties.
     private $name;
@@ -50,8 +53,8 @@ class Pokemon{
         echo '<br>can not set property $name because it is not defined<br>';
     }
 
-    // the brains behind the battle function, where all data is gathered, used and returnd in a array
-    public function doAttack($move, $target){
+    // the brains behind the battle functionality, where all data is gathered, used and returnd in a array
+    public function doAttack($moveSelect, $target){
 
         // declaring a empty variable for the return later
         $battelText = array();
@@ -60,15 +63,27 @@ class Pokemon{
         $energyTypeData = $this->getProperty('energyType');
         $weaknessData = $target->getProperty('weakness');
         $resistanceData = $target->getProperty('resistance');
-
+        $attackData = $this->getProperty('attacks');
+        
         // turning the gathered data into usable variables
-        $dmg = $move->attackDmg;
-        $energyType = $energyTypeData[0]->energyType;
-        $weaknessType = $weaknessData[0]->energyType;
-        $weaknessValue = $weaknessData[0]->multiplier;
-        $resistanceType = $resistanceData[0]->energyType;
-        $resistanceValue = $resistanceData[0]->waarde;
-           
+        if($moveSelect == 0){
+        $attackName = $attackData[0]->getProperty('attackName');
+        $dmg = $attackData[0]->getProperty('attackDmg');
+        }
+        elseif($moveSelect == 1){
+            $attackName = $attackData[1]->getProperty('attackName');
+        $dmg = $attackData[1]->getProperty('attackDmg');
+        }
+        else{
+            echo "selected a invalid move";
+        }
+
+        $energyType = $energyTypeData[0]->getProperty('energyType');
+        $weaknessType = $weaknessData[0]->getProperty('energyType');
+        $weaknessValue = $weaknessData[0]->getProperty('multiplier');
+        $resistanceType = $resistanceData[0]->getProperty('energyType');
+        $resistanceValue = $resistanceData[0]->getProperty('waarde');
+
         // checks if the move if effective against the target or not.
         if ($energyType == $weaknessType){
             $dmg = $dmg * $weaknessValue;
@@ -83,10 +98,10 @@ class Pokemon{
 
         }
         
-        // passing all the data that is needed for the echos into a variable array so it can be returned.
+        // passing all the data that is needed for the battletext into a variable array so it can be returned.
         array_push($battelText, $this->name);
         array_push($battelText, $target->name);
-        array_push($battelText, $move->attackName);
+        array_push($battelText, $attackName);
         array_push($battelText, $dmg);
         array_push($battelText, $effectiveness);
 

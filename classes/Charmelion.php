@@ -1,7 +1,7 @@
 <?php 
 
 class Charmelion extends Pokemon{
-
+    
     public function __construct($name)
     {
         $energyType = [new EnergyType('fire', 'water', 'lightning')];
