@@ -3,22 +3,25 @@
 class EnergyType{
     
     /**
-     * paramiters
+     * creating the parameters with there encapsulation setting
      *
-     * @param [string] $energyType
-     * @param [string] $weakness
-     * @param [string] $resistance
+     * @param string $energyType declared as private for safety and when needed getters are used
+     * @param string $weakness declared as private for safety and when needed getters are used
+     * @param string $resistance declared as private for safety and when needed getters are used
      */
     private $energyType;
     private $weakness;
     private $resistance;
 
    /**
-    * asings
+    * this constructor breaks up the given data from the pokemon that calls for one of these values so it can be used
+    * 
     *
-    * @param [string] $energyType
-    * @param [string] $weakness
-    * @param [string] $resistance
+    * asigns the broken data to a variable so it can be used in attack functionality 
+    *
+    * @param [string] $energyType the energyType of the pokemon that calls for this function
+    * @param [string] $weakness the weakness of the pokemon that calls for this function
+    * @param [string] $resistance the resistance of the pokemon that calls for this function
     */
     public  function __construct($energyType, $weakness, $resistance)
     {
@@ -27,9 +30,10 @@ class EnergyType{
         $this->resistance = $resistance;
     }
     /**
-     * toString function
-     *
-     * @return string
+     * toString function that turns all data provided above into a string so that they can be used in echo's without to change the dataType when echoing.
+     * 
+     * 
+     * @return string returns a string when called for so that the requested data can be used where needed.
      */
     public function __toString()
     {

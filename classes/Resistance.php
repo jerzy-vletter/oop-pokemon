@@ -3,19 +3,21 @@
 class Resistance{
 
     /**
-     * paramiters
+     * creating the parameters with there encapsulation setting
      *
-     * @param [string] $energyType
-     * @param [int] $waarde
+     * @param string $energyType declared as privated for safety and when needed getters are used
+     * @param int $waarde declared as privated for safety and when needed getters are used
      */
     private $energyType;
     private $waarde;
 
     /**
-     * asign
+     * this constructor breaks up the given data from the pokemon that calls for one of these values so it can be used
      *
-     * @param [string] $energyType
-     * @param [int] $waarde
+     * asigns the broken up data to a variable so it can be used in the battle functonality
+     * 
+     * @param string $energyType the energyType that the specific pokemon is resistance against
+     * @param int $waarde the value that is used for the dmg calculation when the attacked pokemon is weak to the move
      */
     public function __construct($energyType, $waarde)
     {
@@ -24,9 +26,9 @@ class Resistance{
     }
 
     /**
-     * toString
+     * toString function that turns all data provided above into a string so that they can be used in echo's without to change the dataType when echoing.
      *
-     * @return string
+     * @return string returns a string when called for so that the requested data can be used where needed.
      */
     public function __toString()
     {

@@ -2,6 +2,17 @@
 
 class Charmelion extends Pokemon{
     
+    /**
+     * he constructor for the pikachu class.
+     * 
+     * here all the data that is unique to the pikachu class.
+     *
+     * @param string $name The name of the pokemon,
+     *                     it is not given here because all the pikachu 
+     *                     may have different names while having the same background data.
+     * 
+     * @return void.
+     */
     public function __construct($name)
     {
         $energyType = [new EnergyType('fire', 'water', 'lightning')];
