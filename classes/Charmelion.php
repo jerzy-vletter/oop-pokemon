@@ -3,7 +3,7 @@
 class Charmelion extends Pokemon{
     
     /**
-     * he constructor for the pikachu class.
+     * the constructor for the pikachu class.
      * 
      * here all the data that is unique to the pikachu class.
      *
