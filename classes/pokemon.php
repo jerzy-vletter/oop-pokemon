@@ -5,10 +5,16 @@
 /**
  * The main Pokemon class, here the creation of the pokemon is facilitated trough the use of contructors.
  * 
+ * methods that can be found here.
+ * 
+ * DoAttack: this because this is something that all pokemon can do / should be able to do.
+ * checkHp: this because all pokemon have hp that if needed needs to be checked.
+ * getPopulation: to check the current population of alive pokemon, located here so it's easy to find
+ * 
  */
 class Pokemon{
 
-    // declaring variables that are changed later on in the code 1 or more times
+    // declaring variables that are changed later on in the code one/more times
     public static $currentPopulation = 0;
     public static $moveSelect = 0;
 

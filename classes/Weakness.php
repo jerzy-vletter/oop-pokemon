@@ -1,13 +1,12 @@
 <?php 
-
+/**
+ * This is the Weakness class,
+ * 
+ * Here is where the background constructor is for the Weakness property of all the pokemon,
+ * so instead of needing to define all this data every time you create a pokemon you use the contructor to make it easy.
+ */
 class Weakness{
-
-    /**
-     * creating the parameters with there encapsulation setting
-     *
-     * @param string $energyType declared as private for safety and when needed getters are used
-     * @param int $multiplier declared as private for safety and when needed getters are used
-     */
+    //parameters
     private $energyType;
     private $multiplier;
 

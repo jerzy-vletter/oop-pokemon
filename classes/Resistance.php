@@ -1,13 +1,13 @@
 <?php 
 
+/**
+ * This is the Resistance class,
+ * 
+ * Here is where the background constructor is for the Resistance property of all the pokemon,
+ * so instead of needing to define all this data every time you create a pokemon you use the contructor to make it easy.
+ */
 class Resistance{
-
-    /**
-     * creating the parameters with there encapsulation setting
-     *
-     * @param string $energyType declared as privated for safety and when needed getters are used
-     * @param int $waarde declared as privated for safety and when needed getters are used
-     */
+    //parameters
     private $energyType;
     private $waarde;
 

@@ -1,5 +1,12 @@
 <?php 
 
+/**
+ * this is the charmelion class,
+ * 
+ * Here all the base data that is the same across all Charmelions is specified.
+ * 
+ * Reminder,  changing something in here effects all the pokemon created using this class.
+ */
 class Charmelion extends Pokemon{
     
     /**

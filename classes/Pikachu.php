@@ -1,6 +1,12 @@
 <?php 
 
-
+/**
+ * this is the Pikachu class,
+ * 
+ * Here all the base data that is the same across all Pikachu is specified.
+ * 
+ * Reminder,  changing something in here effects all the pokemon created using this class.
+ */
 class Pikachu extends Pokemon{
 
     /**

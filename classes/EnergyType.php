@@ -1,14 +1,12 @@
 <?php 
-
+/**
+ * this is the EnergyType class,
+ * 
+ * Here is where the background constructor is for the EnergyType property of all pokemon,
+ * so instead of needing to define all this data every time you create a pokemon you can just use this contructor to make it easy.
+ */
 class EnergyType{
-    
-    /**
-     * creating the parameters with there encapsulation setting
-     *
-     * @param string $energyType declared as private for safety and when needed getters are used
-     * @param string $weakness declared as private for safety and when needed getters are used
-     * @param string $resistance declared as private for safety and when needed getters are used
-     */
+    //parameters
     private $energyType;
     private $weakness;
     private $resistance;
