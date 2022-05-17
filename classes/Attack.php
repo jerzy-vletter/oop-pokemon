@@ -1,13 +1,13 @@
 <?php 
 
+/**
+ * This is the Attack class
+ * 
+ * Here is where the background contructor is for the attacks property of all the pokemon,
+ * so instead of needing to define all the every time you create a pokemon you use the contructor to make it easy.
+ */
 class Attack{
 
-    /**
-     * creating the parameters with there encapsulation setting
-     *
-     * @param string $attackName declared as private for safety and when needed getters are used
-     * @param int $attackDmg declared as private for safety and when needed getters are used.
-     */
     private $attackName;
     private $attackDmg;
 
